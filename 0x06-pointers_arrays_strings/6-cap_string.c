@@ -18,7 +18,7 @@ int isDelimeter(char c)
 {
         int i;
         char delimeter[] = " \t\n,.!?\"(){};";
-        for (i=0;i<12;i++)
+        for (i=0;i<13;i++)
                 if (c==delimeter[i])
                         return (1);
         return (0);
