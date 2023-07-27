@@ -17,7 +17,7 @@ int isLower(char c){
 int isDelimeter(char c)
 {
         int i;
-        char delimeter[] = " \t\n,.!?\"(){};";
+        char delimeter[] = " \n,\t.!?\"(){};";
         for (i=0;i<13;i++)
                 if (c==delimeter[i])
                         return (1);
