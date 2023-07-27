@@ -1,11 +1,11 @@
 #include "main.h"
-#include "stdio"
+#include <stdio.h>
 /**
  * islower  - determines whether ascii is lowercase
  * 0c: character
  * Return:1 if true, 0 if false
  */
-int islower(char c){
+int isLower(char c){
 	return (c>=97 &&c<=122);
 }
 
@@ -17,7 +17,7 @@ int islower(char c){
 int isDelimeter(char c)
 {
         int i;
-        char delimeter[]=[] = " \t\n,.!?\"(){}";
+        char delimeter[] = " \t\n,.!?\"(){}";
         for (i=0;i<12;i++)
                 if (c==delimeter[i])
                         return (1);
@@ -38,7 +38,7 @@ char *cap_string(char *s)
 	{
 		if (isDelimeter(*s))
 			foundDelimeter=1;
-		else if (islower(*s) && foundDelimeter)
+		else if (isLower(*s) && foundDelimeter)
 		{
 			*s-=32;
 			foundDelimeter=0;
