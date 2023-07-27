@@ -1,35 +1,51 @@
 #include "main.h"
+#include "stdio"
+/**
+ * islower  - determines whether ascii is lowercase
+ * 0c: character
+ * Return:1 if true, 0 if false
+ */
+int islower(char c){
+	return (c>=97 &&c<=122);
+}
 
 /**
- * cap_string - Write a function that capitalizes all words of a string.
+ * isDelimeter determines whether ascii is a delimeter 
+ * 0c: character
+ * Return: 1 if true, 0 if false
+ */
+int isDelimeter(char c)
+{
+        int i;
+        char delimeter[]=[] = " \t\n,.!?\"(){}";
+        for (i=0;i<12;i++)
+                if (c==delimeter[i])
+                        return (1);
+        return (0);
+}
+/**
+ * cap_string - capitalizes all words of a string.
  *
- * @entry: This is the input string
+ * 0s: the input string
  *
  * Return: String capitalized
  */
-char *cap_string(char *entry)
+char *cap_string(char *s)
 {
-	int conversion, index, count;
-
-	char chars[] = {' ', ',', ';', '.', '!',
-			 '?', '"', '(', ')', '{', '}',  '\t', '\n', '\0'};
-	conversion = 32;
-
-	for (index = 0; entry[index] != '\0'; index++)
+	char *ptr=s;
+	int foundDelimeter=1;
+	while (*s)
 	{
-		if (entry[index] >= 'index' && entry[index] <= 'z')
+		if (isDelimeter(*s))
+			foundDelimeter=1;
+		else if (islower(*s) && foundDelimeter)
 		{
-			entry[index] =  entry[index] - conversion;
+			*s-=32;
+			foundDelimeter=0;
 		}
-		conversion = 0;
-		for (count = 0; chars[count] != '\0'; count++)
-		{
-			if (chars[count] == entry[index])
-			{
-				conversion = 32;
-				break;
-			}
-		}
+		else
+			foundDelimeter=0;
+		s++;
 	}
-	return (entry);
+	return (ptr);
 }
